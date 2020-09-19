@@ -20,14 +20,15 @@ apt-get install certbot curl jq git
 ## How to obtain Dinahosting API
 
 1. [Register for Dinahosting API access on this URL](https://dinahosting.com/api/?affref=5F664727881E1)
-2. Use thec ontrol panel access details as API credentials
+2. Use your control panel user and password as the API credentials
 
 ## Installation
 
-Execute the following command to download the scripts to some folder **which is only readable by root**:
+Execute the following command to download the scripts to some folder **which is only readable by root** and make sure they are executable:
 
 ```
 git clone https://github.com/daniol/dinahosting-letsencrypt.git
+chmod +x dinahosting-letsencrypt/*.sh
 ```
 
 ## Configuration
