@@ -3,6 +3,8 @@ Let's Encrypt validation hook for [Dinahosting](https://dinahosting.com/?affref=
 
 ## Requirements
 
+* Active domain registered with [Dinahosting](https://dinahosting.com/?affref=5F664727881E1)
+* Valid [Dinahosting](https://dinahosting.com/?affref=5F664727881E1) API credentials
 * Linux OS
 * [Certbot](https://certbot.eff.org/)
 * CURL
@@ -15,9 +17,14 @@ apt-get update
 apt-get install certbot curl jq git
 ```
 
+## How to obtain Dinahosting API
+
+1. Register API access on https://dinahosting.com/api
+2. Use thec ontrol panel access details as API credentials
+
 ## Installation
 
-Execute the following command to download the scripts to some folder:
+Execute the following command to download the scripts to some folder **which is only readable by root**:
 
 ```
 git clone https://github.com/daniol/dinahosting-letsencrypt.git
