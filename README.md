@@ -4,9 +4,9 @@ Let's Encrypt validation hook for [Dinahosting](https://dinahosting.com/?affref=
 ## Requirements
 
 * Linux OS
-* [https://certbot.eff.org/](Certbot)
+* [Certbot](https://certbot.eff.org/)
 * CURL
-* jq
+* [jq](https://stedolan.github.io/jq/)
 
 Installation of dependencies on Ubuntu/Debian:
 
@@ -27,13 +27,12 @@ git clone https://github.com/daniol/dinahosting-letsencrypt.git
 
 Edit the file `dinahosting_vars.sh` and set the API credentials. 
 
-`API_USER` is the user name you use to log in to the customer panel.
-
-`API_PASS` is the password to the customer panel.
+* `API_USER` is the user name you use to log in to the customer panel.
+* `API_PASS` is the password to the customer panel.
 
 ## How to configure a wilcard domain with automatic renew
 
-The following example adds a certificate to example.com and all subdomains. Don't forget to write the full path to the `manual-auth-hook` and `manual-cleanup-hook` scripts.
+The following example creates a certificate for example.com and all subdomains (*.example.com). Don't forget to write the full path to the `manual-auth-hook` and `manual-cleanup-hook` scripts.
 
 ```
 certbot certonly --manual -d *.example.com -d example.com \
@@ -51,4 +50,12 @@ Add the following in the virtualhost configuration file (between &lt;VirtualHost
 SSLCertificateFile /etc/letsencrypt/live/example.com/fullchain.pem
 SSLCertificateKeyFile /etc/letsencrypt/live/example.com/privkey.pem
 Include /etc/letsencrypt/options-ssl-apache.conf
+```
+
+### Configure autorenew
+
+Add a cron task to `certbot renew` to be executed once a week, for example:
+
+```
+0 0 * * 0 certbot renew --quiet --agree-tos --post-hook "service apache2 reload" >/dev/null 2>&1
 ```
