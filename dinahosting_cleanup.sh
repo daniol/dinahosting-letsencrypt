@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Include credentials from file
-source dinahosting_vars.sh
+source $(dirname $0)/dinahosting_vars.sh
 
 # Remove the challenge TXT record(s)
 if [ -n "${CERTBOT_DOMAIN}" ]; then

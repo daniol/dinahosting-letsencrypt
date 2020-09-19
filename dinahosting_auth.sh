@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Include credentials from file
-source dinahosting_vars.sh
+source $(dirname $0)/dinahosting_vars.sh
 
 # Create TXT record
 responseCode=$( curl -s "https://dinahosting.com/special/api.php?AUTH_USER=$API_USER&AUTH_PWD=$API_PASS&command=Domain_Zone_AddTypeTXT&domain=$CERTBOT_DOMAIN&hostname=_acme-challenge&text=$CERTBOT_VALIDATION&responseType=json&SIMULATE=false" | jq -r '.responseCode' )
