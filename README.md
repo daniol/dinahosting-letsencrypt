@@ -19,7 +19,7 @@ apt-get install certbot curl jq git
 
 ## How to obtain Dinahosting API
 
-1. Register API access on https://dinahosting.com/api
+1. [Register for Dinahosting API access on this URL](https://dinahosting.com/api/?affref=5F664727881E1)
 2. Use thec ontrol panel access details as API credentials
 
 ## Installation
@@ -45,8 +45,8 @@ The following example creates a certificate for example.com and all subdomains (
 certbot certonly --manual -d *.example.com -d example.com \
  --agree-tos --manual-public-ip-logging-ok --preferred-challenges dns-01 \
  --server https://acme-v02.api.letsencrypt.org/directory \
- --manual-auth-hook /root/dinahosting_auth.sh  \
- --manual-cleanup-hook /root/dinahosting_cleanup.sh
+ --manual-auth-hook /root/dinahosting-letsencrypt/dinahosting_auth.sh  \
+ --manual-cleanup-hook /root/dinahosting-letsencrypt/dinahosting_cleanup.sh
 ```
 
 ### Configure apache virtualhost
