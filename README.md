@@ -67,3 +67,8 @@ Add a cron task to `certbot renew` to be executed once a week, for example:
 ```
 0 0 * * 0 certbot renew --quiet --agree-tos --post-hook "service apache2 reload" >/dev/null 2>&1
 ```
+## FAQ (Frequently Asked Questions)
+
+### Renew command takes a lot of time
+
+When the certificate needs to be renewed, the script waits **6 minutes**, to make sure the DNS changes fully propagate trough the DNS servers and the DNS cache of Letsencrypt expires (the default TTL for TXT entries in [Dinahosting](https://dinahosting.com/?affref=5F664727881E1) is 5 minutes).
